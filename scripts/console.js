@@ -36,12 +36,12 @@ $(function () {
     'use strict';
     $.get("http://localhost:8080/MMM-HTML-Controller/getModules");
     $.get("http://localhost:8080/modules/MMM-HTML-Controller/info/modules.txt", function (data, status, xhf) {
-        module_arr = data.split(',');
+        //module_arr = data.split(',');
         console.log(module_arr);
         generateBtns(module_arr);
     });
 
-    //generateBtns(module_arr);
+    generateBtns(module_arr);
     $('body').attr('style', 'background-color:black');
     $('h1').attr('style', 'color:white');
     $('#btnlist1').addClass("col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4");
@@ -107,7 +107,7 @@ $(function () {
                     opt.value = module;
                     sel.appendChild(opt);
                 });
-                $(".position option").val(function (idx, val) { //supposed to take away duplicates in the dropdown
+                $("option").val(function (idx, val) { //supposed to take away duplicates in the dropdown
                     $(this).siblings("[value='" + val + "']").remove();
                 });
 
@@ -125,17 +125,18 @@ $(function () {
                     }
                 });
 
-                // Event Handlers
-                $button.on('click', function () {
-                    $checkbox.prop('checked', !$checkbox.is(':checked'));
-                    $checkbox.triggerHandler('change');
-                    updateDisplay();
-                });
-                $checkbox.on('change', function () {
-                    updateDisplay();
-                });
             }
+
         }
+        // Event Handlers
+        $button.on('click', function () {
+            $checkbox.prop('checked', !$checkbox.is(':checked'));
+            $checkbox.triggerHandler('change');
+            updateDisplay();
+        });
+        $checkbox.on('change', function () {
+            updateDisplay();
+        });
         // Initialization
         function init() {
             updateDisplay();
