@@ -1,5 +1,14 @@
 var module_arr = ["Weather", "Clock", "Calendar", "News-Feed", "Compliments"];
 var updatedMods = [];
+$(document).ready(function () {
+    generateBtns(module_arr);
+    $('body').attr('align', 'center');
+    $('body').attr('style', 'background-color:black');
+    $('h1').attr('style', 'color:white');
+});
+var module_arr = ["Weather", "Clock", "Calendar", "News Feed", "Compliments"];
+
+>>>>>>> cfd1bc41fa5a17dd3dd34bc52e881b429b881369
 function generateBtns(module_arr) {
     var i = 0;
     module_arr.forEach(function (module) {
@@ -29,10 +38,6 @@ function generateBtns(module_arr) {
         });
     });
 }
-generateBtns(module_arr);
-$('body').attr('align', 'center');
-$('body').attr('style', 'background-color:black');
-$('h1').attr('style', 'color:white');
 
 $(function () {
     $('.button-checkbox').each(function () {
@@ -107,11 +112,11 @@ $(function () {
                   $(".position option").val(function(idx, val) { //supposed to take away duplicates in the dropdown
                     $(this).siblings("[value='"+ val +"']").remove();
                   });
+
             } else {
                 $button
                     .removeClass('btn-success active ')
                     .addClass('btn-danger');
-
                 console.log("a button turned off!");
             }
         }
