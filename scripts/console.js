@@ -35,10 +35,13 @@ function generateBtns(module_arr) {
 $(function () {
     'use strict';
     $.get("http://localhost:8080/MMM-HTML-Controller/getModules");
-    $.get("http://localhost:8080/modules/MMM-HTML-Controller/info/modules.txt", function (data, status, xhf) {
+    module_arr = $.get("http://localhost:8080/modules/MMM-HTML-Controller/info/modules.txt", function (data, status, xhf) {
         module_arr = data.split(',');
         console.log(module_arr);
-        //generateBtns(module_arr);
+        module_arr.forEach(function (module) {
+            module.toLowerCase();
+        })
+        generateBtns(module_arr);
     });
     module_arr.forEach(function (module) {
         module.toLowerCase();
