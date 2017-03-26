@@ -89,7 +89,7 @@ $(function () {
                     if (element.classList.contains("btn-success")) { // IF the element has a class of btn - success
                         updatedMods.push(module); //append element to updatedMods
                         console.log(updatedMods); //print (updatedMods) to console to see what's there
-                        $.get("http://localhost:8080/MMM-HTML-Controller/show" + module);
+                        $.get("http://localhost:8080/MMM-HTML-Controller/show" + module.toLowerCase());
                         updatedMods = updatedMods.filter(function (item, index, inputArray) { //filters and updates mod to only one item per selection (ex. can't have two calendars)
                             return inputArray.indexOf(item) == index;
                         });
@@ -119,7 +119,7 @@ $(function () {
 
                     element = document.getElementById(module);
                     if (element.classList.contains("btn-danger")) {
-                        $.get("http://localhost:8080/MMM-HTML-Controller/hide" + module);
+                        $.get("http://localhost:8080/MMM-HTML-Controller/hide" + module.toLowerCase());
                     } else {
                         console.log("nothing to be seen here..");
                     }
