@@ -40,13 +40,16 @@ $(function () {
         console.log(module_arr);
         //generateBtns(module_arr);
     });
-
+    module_arr.forEach(function (module) {
+        module.toLowerCase();
+    })
     generateBtns(module_arr);
     $('body').attr('style', 'background-color:black');
     $('h1').attr('style', 'color:white');
-    $('#btnlist1').addClass("col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4");
-    $('#btnlist2').addClass("col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4");
-    $('#btnlist3').addClass("col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4");
+    $('button').attr('style', 'margin-bottom:40px');
+    $('#btnlist1').addClass("col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 vspace");
+    $('#btnlist2').addClass("col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 vspace");
+    $('#btnlist3').addClass("col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 vspace");
     $('select').addClass("col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4");
 
     $('.button-checkbox').each(function () {
@@ -89,7 +92,7 @@ $(function () {
                     if (element.classList.contains("btn-success")) { // IF the element has a class of btn - success
                         updatedMods.push(module); //append element to updatedMods
                         console.log(updatedMods); //print (updatedMods) to console to see what's there
-                        $.get("http://localhost:8080/MMM-HTML-Controller/show" + module.toLowerCase());
+                        $.get("http://localhost:8080/MMM-HTML-Controller/show" + module);
                         updatedMods = updatedMods.filter(function (item, index, inputArray) { //filters and updates mod to only one item per selection (ex. can't have two calendars)
                             return inputArray.indexOf(item) == index;
                         });
@@ -119,11 +122,11 @@ $(function () {
                     element = document.getElementById(module);
                     if (element.classList.contains("btn-danger")) {
                         if (module.indexOf('-') == null) {
-                            $.get("http://localhost:8080/MMM-HTML-Controller/hide" + module.toLowerCase());
+                            $.get("http://localhost:8080/MMM-HTML-Controller/hide" + module);
                         } else {
                             var x = module.indexOf('-');
                             module.slice(x, x + 1);
-                            $.get("http://localhost:8080/MMM-HTML-Controller/hide" + module.toLowerCase());
+                            $.get("http://localhost:8080/MMM-HTML-Controller/hide" + module);
                         }
                     } else {
                         console.log("nothing to be seen here..");
