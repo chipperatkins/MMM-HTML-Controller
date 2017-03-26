@@ -1,9 +1,17 @@
-var module_arr = []; // = ["Weather", "Clock", "Calendar", "News-Feed", "Compliments"];
+var module_arr = [];
+
+function getArr(arr) {
+    arr.pop();
+    arr.forEach(function (m) {
+        m.toLowerCase();
+    });
+    return arr;
+}
+// = ["Weather", "Clock", "Calendar", "News-Feed", "Compliments"];
 var updatedMods = [];
 
 function generateBtns(module_arr) {
     'use strict';
-    module_arr.pop();
     var i = 0;
     module_arr.forEach(function (module) {
         var button, btnlist1, btnlist2, btnlist3;
@@ -35,18 +43,11 @@ function generateBtns(module_arr) {
 $(function () {
     'use strict';
     $.get("http://localhost:8080/MMM-HTML-Controller/getModules");
-    module_arr = $.get("http://localhost:8080/modules/MMM-HTML-Controller/info/modules.txt", function (data, status, xhf) {
+    $.get("http://localhost:8080/modules/MMM-HTML-Controller/info/modules.txt", function (data, status, xhf) {
         module_arr = data.split(',');
+        module_arr = getArr(module_arr);
         console.log(module_arr);
-        module_arr.forEach(function (module) {
-            module.toLowerCase();
-        })
-        return module_arr;
-        //generateBtns(module_arr);
     });
-    module_arr.forEach(function (module) {
-        module.toLowerCase();
-    })
     generateBtns(module_arr);
     $('body').attr('style', 'background-color:black');
     $('h1').attr('style', 'color:white');
