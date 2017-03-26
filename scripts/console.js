@@ -66,10 +66,10 @@ $(function () {
 
         module_arr = data.split(',');
         console.log(module_arr);
-        console.log("Data: " + data.text + "\nStatus: " + status);
+        generateBtns(module_arr);
     });
 
-    generateBtns(module_arr);
+    //generateBtns(module_arr);
     $('body').attr('style', 'background-color:black');
     $('h1').attr('style', 'color:white');
     $('#btnlist1').addClass("col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4");
