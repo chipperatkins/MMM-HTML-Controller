@@ -11,17 +11,17 @@ function generateBtns(module_arr) {
         var btnlist1 = document.getElementById('btnlist1');
         var btnlist2 = document.getElementById('btnlist2');
         var btnlist3 = document.getElementById('btnlist3');
-        if (i % 3 == 0) {
+        if (i % 3 === 0) {
             btnlist1.innerHTML += '<span class="button-checkbox"><button type="button" class="btn-danger" data-color="primary">' + module + '</button><input type="checkbox" class="hidden" /></span>';
             console.log(i);
-            i++;
-        } else if (i % 3 == 1) {
+            i += 1;
+        } else if (i % 3 === 1) {
             btnlist2.innerHTML += '<span class="button-checkbox"><button type="button" class="btn-danger" data-color="primary">' + module + '</button><input type="checkbox" class="hidden" /></span>';
             console.log(i);
-            i++;
+            i += 1;
         } else {
             btnlist3.innerHTML += '<span class="button-checkbox"><button type="button" class="btn-danger" data-color="primary">' + module + '</button><input type="checkbox" class="hidden" /></span>';
-            i++;
+            i += 1;
         }
         // 3. Add event handler
         button.addEventListener("click", function () {
@@ -90,7 +90,7 @@ $(function () {
         function init() {
             updateDisplay();
             // Inject the icon if applicable
-            if ($button.find('.state-icon').length == 0) {
+            if ($button.find('.state-icon').length === 0) {
                 $button.prepend('<i class="state-icon ' + settings[$button.data('state')].icon + '"></i> ');
             }
         }
