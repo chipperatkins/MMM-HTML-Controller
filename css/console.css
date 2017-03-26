@@ -3,3 +3,12 @@ button {
     text-align: left;
     border-radius: 3px;
 }
+
+body {
+    text-align: center;
+    background-color: black;
+}
+
+h1 {
+    color: white;
+}

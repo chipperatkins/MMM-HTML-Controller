@@ -1,8 +1,7 @@
 $(document).ready(function () {
     generateBtns(module_arr);
-    $('body').attr('align', 'center');
-    $('body').attr('style', 'background-color:black');
-    $('h1').attr('style', 'color:white');
+    //  $('body').attr('style', 'background-color:black');
+    //$('h1').attr('style', 'color:white');
 });
 var module_arr = ["Weather", "Clock", "Calendar", "News Feed", "Compliments"];
 
