@@ -61,10 +61,10 @@ $(function () {
         })
         .read();*/
     $.get("http://localhost:8080/modules/MMM-HTML-Controller/info/modules.txt", function (data, status, xhf) {
-        console.log(xhf);
+
         console.log(data);
-        console.log(status);
-        module_arr = data.get(1);
+
+        module_arr = data.split(',');
         console.log(module_arr);
         console.log("Data: " + data.text + "\nStatus: " + status);
     });
