@@ -1,4 +1,4 @@
-var module_arr = ["Weather", "Clock", "Calendar", "News-Feed", "Compliments"];
+var module_arr = []; // = ["Weather", "Clock", "Calendar", "News-Feed", "Compliments"];
 var updatedMods = [];
 
 function generateBtns(module_arr) {
