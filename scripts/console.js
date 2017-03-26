@@ -12,15 +12,15 @@ function generateBtns(module_arr) {
         var btnlist2 = document.getElementById('btnlist2');
         var btnlist3 = document.getElementById('btnlist3');
         if (i % 3 === 0) {
-            btnlist1.innerHTML += '<span class="button-checkbox"><button type="button" class="btn-danger" data-color="primary">' + module + '</button><input type="checkbox" class="hidden" /></span>';
+            btnlist1.innerHTML += '<span class="button-checkbox"><button type="button" class="btn-danger" data-color="primary" id='+module+'>' + module + '</button><input type="checkbox" class="hidden" /></span>';
             console.log(i);
             i += 1;
         } else if (i % 3 === 1) {
-            btnlist2.innerHTML += '<span class="button-checkbox"><button type="button" class="btn-danger" data-color="primary">' + module + '</button><input type="checkbox" class="hidden" /></span>';
+            btnlist2.innerHTML += '<span class="button-checkbox"><button type="button" class="btn-danger" data-color="primary" id='+module+'>'+ module + '</button><input type="checkbox" class="hidden" /></span>';
             console.log(i);
             i += 1;
         } else {
-            btnlist3.innerHTML += '<span class="button-checkbox"><button type="button" class="btn-danger" data-color="primary">' + module + '</button><input type="checkbox" class="hidden" /></span>';
+            btnlist3.innerHTML += '<span class="button-checkbox"><button type="button" class="btn-danger" data-color="primary" id='+module+'>' + module + '</button><input type="checkbox" class="hidden" /></span>';
             i += 1;
         }
         // 3. Add event handler
@@ -78,11 +78,26 @@ $(function () {
                     .removeClass('btn-danger')
                     .addClass('btn-success active');
                 console.log(color);
+                console.log("a button turned on!")
+                for (var i=0; i < module_arr.length; i++){
+                  console.log(module_arr[i]);
+                  var element = document.getElementById(module_arr[i])
+                  if (element.classList.contains("btn-success")){//IF the element has a class of btn-success
+                    updatedMods.push(module_arr[i]);//append element to updatedMods
+                    console.log(updatedMods);//print (updatedMods) to console to see what's there
+                    //send updatedMods to <select><options>
+                  }
+                  else{
+                    console.log("nothing to be seen here..")
+                  }
+
+                }
             } else {
                 $button
                     .removeClass('btn-success active ')
                     .addClass('btn-danger');
                 console.log(color);
+                console.log("a button turned off!")
             }
         }
 
