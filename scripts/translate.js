@@ -48,6 +48,7 @@ $(function () {
             var x = getObjectKeyIndex(dict, id);
             options[i].innerHTML = dict[x];
         }
+        console.log(buttons[0]);
         for (i = 0; i < buttons.length; i += 1) {
             var id = buttons[i].getAttribute('id');
 
