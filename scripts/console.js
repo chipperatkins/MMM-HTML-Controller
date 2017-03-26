@@ -41,7 +41,8 @@ $(function () {
         module_arr.forEach(function (module) {
             module.toLowerCase();
         })
-        generateBtns(module_arr);
+        return module_arr;
+        //generateBtns(module_arr);
     });
     module_arr.forEach(function (module) {
         module.toLowerCase();
