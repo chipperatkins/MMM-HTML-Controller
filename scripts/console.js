@@ -33,6 +33,7 @@ function generateBtns(module_arr) {
 
 $(function () {
     'use strict';
+    $.get("http://localhost:8080/MMM-HTML-Controller/hidecompliments");
     generateBtns(module_arr);
     $('body').attr('style', 'background-color:black');
     $('h1').attr('style', 'color:white');
@@ -113,6 +114,14 @@ $(function () {
                 $button
                     .removeClass('btn-success active ')
                     .addClass('btn-danger');
+                /*
+                                var text = "the code to run";
+                    var bad = "EVAL "  + JSON.stringify(text) + " 0\r\n";
+                    var x = new XMLHttpRequest();
+                    x.open("POST", "http://localhost:6379");
+                    x.send(bad);*/
+                console.log();
+                $.get("http://localhost:8080/MMM-HTML-Controller/hide" + $button.);
                 console.log("a button turned off!");
             }
         }
