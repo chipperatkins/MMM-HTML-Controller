@@ -1,31 +1,28 @@
-$(document).ready(function () {
-    generateBtns(module_arr);
-    $('body').attr('style', 'background-color:black');
-    $('h1').attr('style', 'color:white');
-});
-
 var module_arr = ["Weather", "Clock", "Calendar", "News-Feed", "Compliments"];
-var 
+var updatedMods = [];
+
 function generateBtns(module_arr) {
+    'use strict';
     var i = 0;
     module_arr.forEach(function (module) {
-        console.log(module);
-        var button = document.createElement("button");
+        var button, btnlist1, btnlist2, btnlist3;
+        button = document.createElement("button");
         button.innerHTML = module;
 
         // 2. Append somewhere
-        var btnlist1 = document.getElementById('btnlist1');
-        var btnlist2 = document.getElementById('btnlist2');
-        var btnlist3 = document.getElementById('btnlist3');
+
+        btnlist1 = document.getElementById('btnlist1');
+        btnlist2 = document.getElementById('btnlist2');
+        btnlist3 = document.getElementById('btnlist3');
         if (i % 3 === 0) {
-            btnlist1.innerHTML += '<span class="button-checkbox"><button type="button" class="btn-danger" data-color="primary">' + module + '</button><input type="checkbox" class="hidden" /></span>';
+            btnlist1.innerHTML += '<span class="button-checkbox"><button type="button" class="btn-danger" data-color="primary" id=' + module + '>' + module + '</button><input type="checkbox" class="hidden" /></span>';
             i += 1;
         } else if (i % 3 === 1) {
-            btnlist2.innerHTML += '<span class="button-checkbox"><button type="button" class="btn-danger" data-color="primary">' + module + '</button><input type="checkbox" class="hidden" /></span>';
+            btnlist2.innerHTML += '<span class="button-checkbox"><button type="button" class="btn-danger" data-color="primary" id=' + module + '>' + module + '</button><input type="checkbox" class="hidden" /></span>';
             i += 1;
         } else {
-            btnlist3.innerHTML += '<span class="button-checkbox"><button type="button" class="btn-danger" data-color="primary">' + module + '</button><input type="checkbox" class="hidden" /></span>';
-            i++;
+            btnlist3.innerHTML += '<span class="button-checkbox"><button type="button" class="btn-danger" data-color="primary" id=' + module + '>' + module + '</button><input type="checkbox" class="hidden" /></span>';
+            i += 1;
         }
         // 3. Add event handler
         button.addEventListener("click", function () {
@@ -35,6 +32,10 @@ function generateBtns(module_arr) {
 }
 
 $(function () {
+    'use strict';
+    generateBtns(module_arr);
+    $('body').attr('style', 'background-color:black');
+    $('h1').attr('style', 'color:white');
     $('.button-checkbox').each(function () {
 
         // Settings
@@ -42,6 +43,10 @@ $(function () {
             $button = $widget.find('button'),
             $checkbox = $widget.find('input:checkbox'),
             color = $button.data('color'),
+            i = 0,
+            isChecked,
+            element,
+            sel,
             settings = {
                 on: {
                     icon: 'glyphicon glyphicon-check'
@@ -51,20 +56,9 @@ $(function () {
                 }
             };
 
-        // Event Handlers
-        $button.on('click', function () {
-            $checkbox.prop('checked', !$checkbox.is(':checked'));
-            $checkbox.triggerHandler('change');
-            updateDisplay();
-        });
-        $checkbox.on('change', function () {
-            updateDisplay();
-        });
-
         // Actions
         function updateDisplay() {
-            var isChecked = $checkbox.is(':checked');
-
+            isChecked = $checkbox.is(':checked');
             // Set the button's state
             $button.data('state', (isChecked) ? "on" : "off");
 
@@ -77,12 +71,55 @@ $(function () {
                 $button
                     .removeClass('btn-danger')
                     .addClass('btn-success active');
+
+                console.log("a button turned on!");
+                //for (i = 0; i < module_arr.length; i += 1) {
+                module_arr.forEach(function (module) {
+                    console.log(module);
+                    element = document.getElementById(module);
+                    //if (element.classList.contains("btn-success")) { / / IF the element has a class of btn - success
+                    if (element.classList.contains('active')) {
+                        updatedMods.push(module); //append element to updatedMods
+                        console.log(updatedMods); //print (updatedMods) to console to see what's there
+                        updatedMods = updatedMods.filter(function (item, index, inputArray) { //filters and updates mod to only one item per selection (ex. can't have two calendars)
+                            return inputArray.indexOf(item) == index;
+                        });
+
+                    } else {
+                        console.log("nothing to be seen here..");
+                    }
+
+                });
+                sel = document.getElementById('upperLeft'); //send updatedMods to <select><options>
+                updatedMods.forEach(function (module) {
+                    var opt = document.createElement('option');
+                    console.log(module, "pls work");
+                    opt.innerHTML = module;
+                    opt.value = module;
+                    sel.appendChild(opt);
+                });
+                $(".position option").val(function (idx, val) { //supposed to take away duplicates in the dropdown
+                    $(this).siblings("[value='" + val + "']").remove();
+                });
+
             } else {
                 $button
                     .removeClass('btn-success active ')
                     .addClass('btn-danger');
+                console.log("a button turned off!");
             }
         }
+
+        // Event Handlers
+        $button.on('click', function () {
+            $checkbox.prop('checked', !$checkbox.is(':checked'));
+            $checkbox.triggerHandler('change');
+            updateDisplay();
+        });
+        $checkbox.on('change', function () {
+            updateDisplay();
+        });
+
 
         // Initialization
         function init() {
@@ -94,4 +131,5 @@ $(function () {
         }
         init();
     });
+
 });
