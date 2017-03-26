@@ -3,6 +3,7 @@ var updatedMods = [];
 
 function generateBtns(module_arr) {
     'use strict';
+    module_arr.pop;
     var i = 0;
     module_arr.forEach(function (module) {
         var button, btnlist1, btnlist2, btnlist3;
