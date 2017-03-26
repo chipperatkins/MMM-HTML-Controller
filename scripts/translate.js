@@ -30,15 +30,8 @@ $(function () {
             "lowerCenter": "Parte inferior central",
             "lowerRight": "Inferior derecha"
         };
-        var buttons = document.getElementsByClassName('button');
-        /*
-        document.getElementById('upperleft').setAttribute("value", "Arriba a la izquierda");
-        document.getElementById('upperCenter').setAttribute("value", "Centro de Alto");
-        document.getElementById('upperRight').setAttribute("value", "Superior derecha");
-        document.getElementById('lowerLeft').setAttribute("value", "Abajo a la izquierda");
-        document.getElementById('upperCenter').setAttribute("value", "Baja Center");
-        document.getElementById('upperRight').setAttribute("value", "Inferior derecha");
-        */
+        var buttons = document.getElementsByTagName('button');
+
         var options = [];
         options = document.getElementsByTagName('option');
         console.log(options[0]);
