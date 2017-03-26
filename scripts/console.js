@@ -32,121 +32,123 @@ function generateBtns(module_arr) {
 }
 
 $(function () {
-    'use strict';
-    $.get("http://localhost:8080/MMM-HTML-Controller/getModules");
-    $.get("http://localhost:8080/MMM-HTML-Controller/hidecompliments");
-    generateBtns(module_arr);
-    $('body').attr('style', 'background-color:black');
-    $('h1').attr('style', 'color:white');
-    $('#btnlist1').addClass("col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4");
-    $('#btnlist2').addClass("col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4");
-    $('#btnlist3').addClass("col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4");
-    $('select').addClass("col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4");
-    //$('Center').addClass("col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4");
-    //$('Right').addClass("col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4");
+            'use strict';
+            $.get("http://localhost:8080/MMM-HTML-Controller/getModules");
 
-    $('.button-checkbox').each(function () {
+            generateBtns(module_arr);
+            $('body').attr('style', 'background-color:black');
+            $('h1').attr('style', 'color:white');
+            $('#btnlist1').addClass("col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4");
+            $('#btnlist2').addClass("col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4");
+            $('#btnlist3').addClass("col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4");
+            $('select').addClass("col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4");
+            //$('Center').addClass("col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4");
+            //$('Right').addClass("col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4");
 
-        // Settings
-        var $widget = $(this),
-            $button = $widget.find('button'),
-            $checkbox = $widget.find('input:checkbox'),
-            color = $button.data('color'),
-            i = 0,
-            isChecked,
-            element,
-            sel,
-            settings = {
-                on: {
-                    icon: 'glyphicon glyphicon-check'
-                },
-                off: {
-                    icon: 'glyphicon glyphicon-unchecked'
-                }
-            };
+            $('.button-checkbox').each(function () {
 
-        // Actions
-        function updateDisplay() {
-            isChecked = $checkbox.is(':checked');
-            // Set the button's state
-            $button.data('state', (isChecked) ? "on" : "off");
+                // Settings
+                var $widget = $(this),
+                    $button = $widget.find('button'),
+                    $checkbox = $widget.find('input:checkbox'),
+                    color = $button.data('color'),
+                    i = 0,
+                    isChecked,
+                    element,
+                    sel,
+                    settings = {
+                        on: {
+                            icon: 'glyphicon glyphicon-check'
+                        },
+                        off: {
+                            icon: 'glyphicon glyphicon-unchecked'
+                        }
+                    };
 
-            // Set the button's icon
-            $button.find('.state-icon')
-                .removeClass()
-                .addClass('state-icon ' + settings[$button.data('state')].icon);
-            // Update the button's color
-            if (isChecked) {
-                $button
-                    .removeClass('btn-danger')
-                    .addClass('btn-success active');
+                // Actions
+                function updateDisplay() {
+                    isChecked = $checkbox.is(':checked');
+                    // Set the button's state
+                    $button.data('state', (isChecked) ? "on" : "off");
 
-                console.log("a button turned on!");
-                //for (i = 0; i < module_arr.length; i += 1) {
-                module_arr.forEach(function (module) {
-                    console.log(module);
-                    element = document.getElementById(module);
-                    //if (element.classList.contains("btn-success")) { / / IF the element has a class of btn - success
-                    if (element.classList.contains('active')) {
-                        updatedMods.push(module); //append element to updatedMods
-                        console.log(updatedMods); //print (updatedMods) to console to see what's there
-                        updatedMods = updatedMods.filter(function (item, index, inputArray) { //filters and updates mod to only one item per selection (ex. can't have two calendars)
-                            return inputArray.indexOf(item) == index;
+                    // Set the button's icon
+                    $button.find('.state-icon')
+                        .removeClass()
+                        .addClass('state-icon ' + settings[$button.data('state')].icon);
+                    // Update the button's color
+                    if (isChecked) {
+                        $button
+                            .removeClass('btn-danger')
+                            .addClass('btn-success active');
+
+                        console.log("a button turned on!");
+                        //for (i = 0; i < module_arr.length; i += 1) {
+                        module_arr.forEach(function (module) {
+                            console.log(module);
+                            element = document.getElementById(module);
+                            if (element.classList.contains("btn-success")) { // IF the element has a class of btn - success
+                                updatedMods.push(module); //append element to updatedMods
+                                console.log(updatedMods); //print (updatedMods) to console to see what's there
+                                $.get("http://localhost:8080/MMM-HTML-Controller/show" + module);
+                                updatedMods = updatedMods.filter(function (item, index, inputArray) { //filters and updates mod to only one item per selection (ex. can't have two calendars)
+                                    return inputArray.indexOf(item) == index;
+                                });
+
+                            } else {
+                                console.log("nothing to be seen here..");
+                            }
+
+                        });
+                        sel = document.getElementById('upperLeft'); //send updatedMods to <select><options>
+                        updatedMods.forEach(function (module) {
+                            var opt = document.createElement('option');
+                            console.log(module, "pls work");
+                            opt.innerHTML = module;
+                            opt.value = module;
+                            sel.appendChild(opt);
+                        });
+                        $(".position option").val(function (idx, val) { //supposed to take away duplicates in the dropdown
+                            $(this).siblings("[value='" + val + "']").remove();
                         });
 
                     } else {
-                        console.log("nothing to be seen here..");
-                    }
+                        $button
+                            .removeClass('btn-success active ')
+                            .addClass('btn-danger');
+                        module_arr.forEach(function (module) {
+                                console.log(module);
+                                element = document.getElementById(module);
+                                if (element.classList.contains("btn-danger")) {
+                                    $.get("http://localhost:8080/MMM-HTML-Controller/hide" + module);
+                                } else {
+                                    console.log("nothing to be seen here..");
+                                }
+                                console.log();
 
-                });
-                sel = document.getElementById('upperLeft'); //send updatedMods to <select><options>
-                updatedMods.forEach(function (module) {
-                    var opt = document.createElement('option');
-                    console.log(module, "pls work");
-                    opt.innerHTML = module;
-                    opt.value = module;
-                    sel.appendChild(opt);
-                });
-                $(".position option").val(function (idx, val) { //supposed to take away duplicates in the dropdown
-                    $(this).siblings("[value='" + val + "']").remove();
-                });
+                                console.log("a button turned off!");
+                            }
+                        }
 
-            } else {
-                $button
-                    .removeClass('btn-success active ')
-                    .addClass('btn-danger');
-                /*
-                                var text = "the code to run";
-                    var bad = "EVAL "  + JSON.stringify(text) + " 0\r\n";
-                    var x = new XMLHttpRequest();
-                    x.open("POST", "http://localhost:6379");
-                    x.send(bad);*/
-                console.log();
-
-                console.log("a button turned off!");
-            }
-        }
-
-        // Event Handlers
-        $button.on('click', function () {
-            $checkbox.prop('checked', !$checkbox.is(':checked'));
-            $checkbox.triggerHandler('change');
-            updateDisplay();
-        });
-        $checkbox.on('change', function () {
-            updateDisplay();
-        });
+                        // Event Handlers
+                        $button.on('click', function () {
+                            $checkbox.prop('checked', !$checkbox.is(':checked'));
+                            $checkbox.triggerHandler('change');
+                            updateDisplay();
+                        });
+                        $checkbox.on('change', function () {
+                            updateDisplay();
+                        });
 
 
-        // Initialization
-        function init() {
-            updateDisplay();
-            // Inject the icon if applicable
-            if ($button.find('.state-icon').length === 0) {
-                $button.prepend('<i class="state-icon ' + settings[$button.data('state')].icon + '"></i> ');
-            }
-        }
-        init();
-    });
+                        // Initialization
+                        function init() {
+                            updateDisplay();
+                            // Inject the icon if applicable
+                            if ($button.find('.state-icon').length === 0) {
+                                $button.prepend('<i class="state-icon ' + settings[$button.data('state')].icon + '"></i> ');
+                            }
+                        }
+                        init();
+                    });
 
-});
+            });
