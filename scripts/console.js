@@ -3,7 +3,7 @@ var updatedMods = [];
 
 function generateBtns(module_arr) {
     'use strict';
-    module_arr.pop;
+    module_arr.pop();
     var i = 0;
     module_arr.forEach(function (module) {
         var button, btnlist1, btnlist2, btnlist3;
@@ -35,36 +35,7 @@ function generateBtns(module_arr) {
 $(function () {
     'use strict';
     $.get("http://localhost:8080/MMM-HTML-Controller/getModules");
-    /*
-        function readTextFile(file) {
-            var rawFile = new XMLHttpRequest();
-            rawFile.open("GET", file, false);
-
-            var allText = rawFile.responseText;
-            console.log(allText);
-            module_arr = allText.split(',');
-
-        }
-    //readTextFile("file:///home/pi/MagicMirror/modules/MMM-HTML-Controller/info/modules.txt");
-    //readTextFile("file:///Users/joeymurphy/Dev/MagicMirrorConsole/MMM-HTML-Controller/info/modules.txt");
-    var f = "file:///Users/joeymurphy/Dev/MagicMirrorConsole/MMM-HTML-Controller/info/modules.txt";
-    reader = new BufferedReader(f, {
-            encoding: "utf8"
-        })
-        .on("error", function (error) {
-            console.log("error: " + error);
-        })
-        .on("line", function (line) {
-            console.log("line: " + line);
-        })
-        .on("end", function () {
-            console.log("EOF");
-        })
-        .read();*/
     $.get("http://localhost:8080/modules/MMM-HTML-Controller/info/modules.txt", function (data, status, xhf) {
-
-        console.log(data);
-
         module_arr = data.split(',');
         console.log(module_arr);
         generateBtns(module_arr);
