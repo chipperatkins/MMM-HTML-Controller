@@ -60,7 +60,7 @@ $(function () {
             console.log("EOF");
         })
         .read();*/
-    $.get("http://localhost:8080/MMM-HTML-Controller/info/modules.txt", function (data, status, xhf) {
+    $.get("http://localhost:8080/modules/MMM-HTML-Controller/info/modules.txt", function (data, status, xhf) {
         console.log(xhf);
         console.log(data);
         console.log(status);
