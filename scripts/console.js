@@ -6,9 +6,6 @@ $(document).ready(function () {
     $('body').attr('style', 'background-color:black');
     $('h1').attr('style', 'color:white');
 });
-var module_arr = ["Weather", "Clock", "Calendar", "News Feed", "Compliments"];
-
->>>>>>> cfd1bc41fa5a17dd3dd34bc52e881b429b881369
 function generateBtns(module_arr) {
     var i = 0;
     module_arr.forEach(function (module) {
