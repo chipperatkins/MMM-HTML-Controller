@@ -1,0 +1,1 @@
+MMM-HTML-Controller,mm-hide-all,alert,updatenotification,clock,calendar,compliments,currentweather,weatherforecast,newsfeed,
