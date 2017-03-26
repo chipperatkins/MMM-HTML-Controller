@@ -1,5 +1,5 @@
-var module_arr = ["Weather", "Clock", "Calendar", "News Feed", "Compliments"];
-
+var module_arr = ["Weather", "Clock", "Calendar", "News-Feed", "Compliments"];
+var updatedMods = [];
 function generateBtns(module_arr) {
     var i = 0;
     module_arr.forEach(function (module) {
@@ -64,7 +64,6 @@ $(function () {
         // Actions
         function updateDisplay() {
             var isChecked = $checkbox.is(':checked');
-
             // Set the button's state
             $button.data('state', (isChecked) ? "on" : "off");
 
@@ -77,27 +76,43 @@ $(function () {
                 $button
                     .removeClass('btn-danger')
                     .addClass('btn-success active');
-                console.log(color);
+
                 console.log("a button turned on!")
                 for (var i=0; i < module_arr.length; i++){
                   console.log(module_arr[i]);
-                  var element = document.getElementById(module_arr[i])
+                  var element = document.getElementById(module_arr[i]);
+                  $button.get
                   if (element.classList.contains("btn-success")){//IF the element has a class of btn-success
                     updatedMods.push(module_arr[i]);//append element to updatedMods
                     console.log(updatedMods);//print (updatedMods) to console to see what's there
-                    //send updatedMods to <select><options>
+                    updatedMods = updatedMods.filter( function( item, index, inputArray ) {//filters and updates mod to only one item per selection (ex. can't have two calendars)
+                      return inputArray.indexOf(item) == index;
+                    });
+
                   }
+
                   else{
-                    console.log("nothing to be seen here..")
+                    console.log("nothing to be seen here..");
                   }
 
                 }
+                var sel = document.getElementById('upperLeft');//send updatedMods to <select><options>
+                updatedMods.forEach(function (module) {
+                    var opt = document.createElement('option');
+                    console.log(module,"pls work");
+                    opt.innerHTML = module;
+                    opt.value = module;
+                    sel.appendChild(opt);
+                  });
+                  $(".position option").val(function(idx, val) { //supposed to take away duplicates in the dropdown
+                    $(this).siblings("[value='"+ val +"']").remove();
+                  });
             } else {
                 $button
                     .removeClass('btn-success active ')
                     .addClass('btn-danger');
-                console.log(color);
-                console.log("a button turned off!")
+
+                console.log("a button turned off!");
             }
         }
 
@@ -111,4 +126,5 @@ $(function () {
         }
         init();
     });
+
 });
