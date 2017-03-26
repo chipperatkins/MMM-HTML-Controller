@@ -38,10 +38,10 @@ $(function () {
     $.get("http://localhost:8080/modules/MMM-HTML-Controller/info/modules.txt", function (data, status, xhf) {
         module_arr = data.split(',');
         console.log(module_arr);
-        generateBtns(module_arr);
+        //generateBtns(module_arr);
     });
 
-    //generateBtns(module_arr);
+    generateBtns(module_arr);
     $('body').attr('style', 'background-color:black');
     $('h1').attr('style', 'color:white');
     $('#btnlist1').addClass("col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4");
