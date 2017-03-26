@@ -15,11 +15,12 @@ $(function () {
 
     function translate() {
         var dict = {
+            "MMM-HTML-Controller": "MMM-HTML-Controlador",
             "alert": "alerta",
             "updatenotification": "Notificación de actualización",
             "clock": "reloj",
             "calendar": "calendario",
-            "compliment": "complemento",
+            "compliments": "complementos",
             "currentweather": "clima actuala",
             "weatherforecast": "pronóstico del tiempo",
             "newsfeed": "noticias",
@@ -28,7 +29,8 @@ $(function () {
             "upperRight": "Superior derecha",
             "lowerLeft": "Abaja a la izquierda",
             "lowerCenter": "Parte inferior central",
-            "lowerRight": "Inferior derecha"
+            "lowerRight": "Inferior derecha",
+            "MAGIC MIRROR CONSOLE": "Espejo Mágico Consola"
         };
         var buttons = document.getElementsByTagName('button');
 
@@ -48,6 +50,9 @@ $(function () {
             var x = getObjectKeyIndex(dict, id);
             buttons[i].innerHTML = dict[x];
         }
+        var title = document.getElementById('title');
+        console.log(title);
+        title.innerHTML = dict[title.innerHTML];
 
     }
     document.getElementById('spanish').onclick = function () {
