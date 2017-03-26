@@ -22,6 +22,7 @@
 
     <!-- Custom Scripting -->
     <script src="../scripts/console.js"></script>
+    <script src="../scripts/translate.js"></script>
 
     <!--[if lt IE 9]>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
@@ -46,8 +47,8 @@
     <div id="board">
         <div id="Upper" class="row">
             <select id="upperLeft" class="pos">
-                    <optgroup>Upper Left
-                        <option selected disabled>Upper left</option><option>02</option>
+                    <optgroup value="Upper Left">
+                        <option selected disabled>Upper Left</option><option>02</option>
                         <option>03</option>
                     </optgroup>
                 </select>
@@ -80,7 +81,7 @@
                         <option>03</option>
                     </optgroup>
                 </select>
-            <select id="lowerright" class="pos">
+            <select id="lowerRight" class="pos">
                     <optgroup>Lower Right
                         <option selected disabled>Lower Right</option><option>02</option>
                         <option>03</option>
@@ -92,8 +93,8 @@
         <nav class="navbar navbar-inverse navbar-fixed-bottom">
             <div class="container-fluid">
                 <ul class="nav navbar-nav">
-                    <li><a class="page-scroll" href="#english">English</a></li>
-                    <li class="page-scroll"><a href="#espanol">Espanol</a></li>
+                    <li class="page-scroll"><a href="#english">English</a></li>
+                    <li class="page-scroll"><a id="spanish" href="#espanol" onclick="translate()">Espanol</a></li>
                     <li class="page-scroll"><a href="#deustch">Deustch</a></li>
                     <li class="page-scroll"><a href="#nedarlands">Nedarlands</a></li>
                     <li class="page-scroll"><a href="#français">français</a></li>

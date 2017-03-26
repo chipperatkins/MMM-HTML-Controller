@@ -1,4 +1,5 @@
 var module_arr = [];
+module_arr = ["clock", "Clock", "Calendar", "News-Feed", "Compliments"];
 
 function getArr(arr) {
     arr.pop();
@@ -7,7 +8,7 @@ function getArr(arr) {
     });
     return arr;
 }
-// = ["Weather", "Clock", "Calendar", "News-Feed", "Compliments"];
+
 var updatedMods = [];
 
 function generateBtns(module_arr) {
@@ -161,4 +162,35 @@ $(function () {
             init();
         });
     });
+});
+
+function translate() {
+    var dict = {
+        "alert": "alerta",
+        "updatenotification": "Notificación de actualización",
+        "clock": "reloj",
+        "calendar": "calendario",
+        "compliment": "complemento",
+        "currentweather": "clima actuala",
+        "weatherforecast": "pronóstico del tiempo",
+        "newsfeed": "noticias"
+    };
+    var buttons = document.getElementsByClassName('button');
+    /*
+    document.getElementById('upperleft').setAttribute("value", "Arriba a la izquierda");
+    document.getElementById('upperCenter').setAttribute("value", "Centro de Alto");
+    document.getElementById('upperRight').setAttribute("value", "Superior derecha");
+    document.getElementById('lowerLeft').setAttribute("value", "Abajo a la izquierda");
+    document.getElementById('upperCenter').setAttribute("value", "Baja Center");
+    document.getElementById('upperRight').setAttribute("value", "Inferior derecha");
+    */
+    options = document.getElementsByTagName('option');
+    options.forEach(function (option) {
+        var id = option.parentElement.parentElement.getAttribute('id');
+        option.innerHTML = dict[id];
+    });
+
+}
+$("#spanish").on('click', function () {
+    translate();
 });
