@@ -34,6 +34,41 @@ function generateBtns(module_arr) {
 $(function () {
     'use strict';
     $.get("http://localhost:8080/MMM-HTML-Controller/getModules");
+    /*
+        function readTextFile(file) {
+            var rawFile = new XMLHttpRequest();
+            rawFile.open("GET", file, false);
+
+            var allText = rawFile.responseText;
+            console.log(allText);
+            module_arr = allText.split(',');
+
+        }
+    //readTextFile("file:///home/pi/MagicMirror/modules/MMM-HTML-Controller/info/modules.txt");
+    //readTextFile("file:///Users/joeymurphy/Dev/MagicMirrorConsole/MMM-HTML-Controller/info/modules.txt");
+    var f = "file:///Users/joeymurphy/Dev/MagicMirrorConsole/MMM-HTML-Controller/info/modules.txt";
+    reader = new BufferedReader(f, {
+            encoding: "utf8"
+        })
+        .on("error", function (error) {
+            console.log("error: " + error);
+        })
+        .on("line", function (line) {
+            console.log("line: " + line);
+        })
+        .on("end", function () {
+            console.log("EOF");
+        })
+        .read();*/
+    $.get("http://localhost:8080/MMM-HTML-Controller/info/modules.txt", function (data, status, xhf) {
+        console.log(xhf);
+        console.log(data);
+        console.log(status);
+        module_arr = data.get(1);
+        console.log(module_arr);
+        console.log("Data: " + data.text + "\nStatus: " + status);
+    });
+
     generateBtns(module_arr);
     $('body').attr('style', 'background-color:black');
     $('h1').attr('style', 'color:white');
@@ -41,8 +76,6 @@ $(function () {
     $('#btnlist2').addClass("col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4");
     $('#btnlist3').addClass("col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4");
     $('select').addClass("col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4");
-    //$('Center').addClass("col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4");
-    //$('Right').addClass("col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4");
 
     $('.button-checkbox').each(function () {
 
@@ -79,11 +112,7 @@ $(function () {
                 $button
                     .removeClass('btn-danger')
                     .addClass('btn-success active');
-
-                console.log("a button turned on!");
-                //for (i = 0; i < module_arr.length; i += 1) {
                 module_arr.forEach(function (module) {
-                    console.log(module);
                     element = document.getElementById(module);
                     if (element.classList.contains("btn-success")) { // IF the element has a class of btn - success
                         updatedMods.push(module); //append element to updatedMods
@@ -101,7 +130,7 @@ $(function () {
                 sel = document.getElementById('upperLeft'); //send updatedMods to <select><options>
                 updatedMods.forEach(function (module) {
                     var opt = document.createElement('option');
-                    console.log(module, "pls work");
+
                     opt.innerHTML = module;
                     opt.value = module;
                     sel.appendChild(opt);
@@ -115,16 +144,13 @@ $(function () {
                     .removeClass('btn-success active ')
                     .addClass('btn-danger');
                 module_arr.forEach(function (module) {
-                    console.log(module);
+
                     element = document.getElementById(module);
                     if (element.classList.contains("btn-danger")) {
                         $.get("http://localhost:8080/MMM-HTML-Controller/hide" + module);
                     } else {
                         console.log("nothing to be seen here..");
                     }
-                    console.log();
-
-                    console.log("a button turned off!");
                 });
 
                 // Event Handlers
