@@ -1,3 +1,9 @@
+$(document).ready(function () {
+    generateBtns(module_arr);
+    $('body').attr('align', 'center');
+    $('body').attr('style', 'background-color:black');
+    $('h1').attr('style', 'color:white');
+});
 var module_arr = ["Weather", "Clock", "Calendar", "News Feed", "Compliments"];
 
 function generateBtns(module_arr) {
@@ -13,15 +19,13 @@ function generateBtns(module_arr) {
         var btnlist3 = document.getElementById('btnlist3');
         if (i % 3 === 0) {
             btnlist1.innerHTML += '<span class="button-checkbox"><button type="button" class="btn-danger" data-color="primary">' + module + '</button><input type="checkbox" class="hidden" /></span>';
-            console.log(i);
             i += 1;
         } else if (i % 3 === 1) {
             btnlist2.innerHTML += '<span class="button-checkbox"><button type="button" class="btn-danger" data-color="primary">' + module + '</button><input type="checkbox" class="hidden" /></span>';
-            console.log(i);
             i += 1;
         } else {
             btnlist3.innerHTML += '<span class="button-checkbox"><button type="button" class="btn-danger" data-color="primary">' + module + '</button><input type="checkbox" class="hidden" /></span>';
-            i += 1;
+            i++;
         }
         // 3. Add event handler
         button.addEventListener("click", function () {
@@ -29,10 +33,6 @@ function generateBtns(module_arr) {
         });
     });
 }
-generateBtns(module_arr);
-$('body').attr('align', 'center');
-$('body').attr('style', 'background-color:black');
-$('h1').attr('style', 'color:white');
 
 $(function () {
     $('.button-checkbox').each(function () {
@@ -77,12 +77,10 @@ $(function () {
                 $button
                     .removeClass('btn-danger')
                     .addClass('btn-success active');
-                console.log(color);
             } else {
                 $button
                     .removeClass('btn-success active ')
                     .addClass('btn-danger');
-                console.log(color);
             }
         }
 
