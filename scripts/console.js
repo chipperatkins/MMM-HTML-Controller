@@ -121,7 +121,7 @@ $(function () {
                     x.open("POST", "http://localhost:6379");
                     x.send(bad);*/
                 console.log();
-                $.get("http://localhost:8080/MMM-HTML-Controller/hide" + $button.);
+
                 console.log("a button turned off!");
             }
         }
