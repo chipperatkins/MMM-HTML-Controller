@@ -33,6 +33,7 @@ function generateBtns(module_arr) {
 
 $(function () {
     'use strict';
+    $.get("http://localhost:8080/MMM-HTML-Controller/getModules");
     $.get("http://localhost:8080/MMM-HTML-Controller/hidecompliments");
     generateBtns(module_arr);
     $('body').attr('style', 'background-color:black');
