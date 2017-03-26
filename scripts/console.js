@@ -3,8 +3,9 @@ $(document).ready(function () {
     $('body').attr('style', 'background-color:black');
     $('h1').attr('style', 'color:white');
 });
-var module_arr = ["Weather", "Clock", "Calendar", "News Feed", "Compliments"];
 
+var module_arr = ["Weather", "Clock", "Calendar", "News-Feed", "Compliments"];
+var 
 function generateBtns(module_arr) {
     var i = 0;
     module_arr.forEach(function (module) {
