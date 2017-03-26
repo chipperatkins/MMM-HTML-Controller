@@ -36,6 +36,13 @@ $(function () {
     generateBtns(module_arr);
     $('body').attr('style', 'background-color:black');
     $('h1').attr('style', 'color:white');
+    $('#btnlist1').addClass("col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4");
+    $('#btnlist2').addClass("col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4");
+    $('#btnlist3').addClass("col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4");
+    $('select').addClass("col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4");
+    //$('Center').addClass("col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4");
+    //$('Right').addClass("col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4");
+
     $('.button-checkbox').each(function () {
 
         // Settings

@@ -30,28 +30,79 @@
 
 <body>
     <h1>MAGIC MIRROR CONSOLE</h1>
-    <div class="row">
-        <div class="col-lg-4 col-sm-4" id="btnlist1">
+    <div id="enabler">
+        <div class="row">
+            <div id="btnlist1">
 
-        </div>
-        <div class="col-lg-4 col-sm-4" id="btnlist2">
+            </div>
+            <div id="btnlist2">
 
-        </div>
-        <div class="col-lg-4 col-sm-4" id="btnlist3">
+            </div>
+            <div id="btnlist3">
 
+            </div>
         </div>
     </div>
     <div id="board">
-        <div id="Upper">
-            <div class="position"><select id="upperLeft" class="pos"><optgroup>Upper Left<option selected disabled>Uleft</option><option>02</option><option>o3</option></optgroup></select></div>
-            <div class="position"><select id="upperCenter" class="pos"><optgroup>Upper Center<option selected disabled>UC</option><option>02</option><option>o3</option></optgroup></select></div>
-            <div class="position"><select id="lowerLeft" class="pos"><optgroup>Lower Left<option selected disabled>Lleft</option><option>02</option><option>o3</option></optgroup></select></div>
+        <div id="Upper" class="row">
+            <select id="upperLeft" class="pos">
+                    <optgroup>Upper Left
+                        <option selected disabled>Upper left</option><option>02</option>
+                        <option>03</option>
+                    </optgroup>
+                </select>
+            <select id="upperCenter" class="pos">
+                    <optgroup>Upper Center
+                        <option selected disabled>Upper Center</option>
+                        <option>02</option><option>03</option>
+                    </optgroup>
+                </select>
+            <select id="upperRight" class="pos">
+                    <optgroup>Upper Right
+                        <option selected disabled>Upper Right</option><option>02</option>
+                        <option>03</option>
+                    </optgroup>
+                </select>
         </div>
-        <div id="Lower">
-            <div class="position"><select id="upperRight" class="pos"><optgroup>Upper Right<option selected disabled>Uright</option><option>02</option><option>o3</option></optgroup></select></div>
-            <div class="position"><select id="lowerCenter" class="pos"><optgroup>Lower Center<option selected disabled>LC</option><option>02</option><option>o3</option></optgroup></select></div>
-            <div class="position"><select id="lowerright" class="pos"><optgroup>Lower Right<option selected disabled>Lright</option><option>o2</option><option>o3</option></optgroup></select></div>
+        <div id="Lower" class="row">
+
+            <select id="lowerLeft" class="pos">
+                    <optgroup>Lower Left
+                        <option selected disabled>Lower Left</option><option>02</option>
+                        <option>03</option>
+                    </optgroup>
+                </select>
+            <select id="lowerCenter" class="pos">
+                    <optgroup>Lower Center
+                        <option selected disabled>Lower Center</option>
+                        <option>02</option>
+                        <option>03</option>
+                    </optgroup>
+                </select>
+            <select id="lowerright" class="pos">
+                    <optgroup>Lower Right
+                        <option selected disabled>Lower Right</option><option>02</option>
+                        <option>03</option>
+                    </optgroup>
+            </select>
         </div>
+    </div>
+    <div id="navbar">
+        <nav class="navbar navbar-inverse navbar-fixed-bottom">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav navbar-center">
+                    <li><a class="page-scroll" href="#english">English</a></li>
+                    <li class="page-scroll"><a href="#espanol">Espanol</a></li>
+                    <li class="page-scroll"><a href="#deustch">Deustch</a></li>
+                    <li class="page-scroll"><a href="#nedarlands">Nedarlands</a></li>
+                    <li class="page-scroll"><a href="#français">français</a></li>
+                    <li class="page-scroll"><a href="#italiano">Italiano</a></li>
+                    <li class="page-scroll"><a href="#japanse">日本語</a></li>
+                    <li class="page-scroll"><a href="#polish">język polski</a></li>
+
+                </ul>
+            </div>
+        </nav>
     </div>
 </body>
 
